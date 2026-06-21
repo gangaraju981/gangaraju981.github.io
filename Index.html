@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>R Gangaraju — Aerospace Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:#ffffff;--l1:#f4f4f4;--l2:#e0e0e0;
+  --t1:#161616;--t2:#525252;--tp:#6f6f6f;--border:#c6c6c6;
+  --blue:#0f62fe;--blue-h:#0353e9;--blue-a:#002d9c;--blue-l:#0043ce;--blue-10:#edf5ff;
+  --nav:#161616;--nav-t:#c6c6c6;
+  --sans:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',Menlo,Courier,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);font-size:16px;line-height:1.5}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav);height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
+.nav-logo{font-size:14px;font-weight:600;color:#fff;letter-spacing:.16px;text-decoration:none}
+.nav-links{display:flex;list-style:none}
+.nav-links a{display:block;padding:0 14px;height:48px;line-height:48px;font-size:14px;font-weight:400;color:var(--nav-t);text-decoration:none;letter-spacing:.16px;transition:color .1s}
+.nav-links a:hover{color:#fff}
+.theme-toggle{background:transparent;border:1px solid #525252;color:var(--nav-t);font-family:var(--sans);font-size:12px;letter-spacing:.16px;padding:0 14px;height:32px;cursor:pointer;border-radius:0;white-space:nowrap;flex-shrink:0}
+.theme-toggle:hover{border-color:#c6c6c6;color:#fff}
+
+/* LAYOUT */
+section{padding:64px 0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+
+/* HERO */
+#hero{background:var(--bg);padding:120px 0 80px;border-bottom:1px solid var(--border)}
+.hero-mono{font-family:var(--mono);font-size:12px;color:var(--blue);letter-spacing:.32px;text-transform:uppercase;margin-bottom:16px}
+.hero-name{font-size:60px;font-weight:300;line-height:1.17;color:var(--t1);margin-bottom:8px}
+.hero-role{font-size:32px;font-weight:300;line-height:1.25;color:var(--t2);margin-bottom:24px}
+.hero-desc{font-size:16px;line-height:1.5;color:var(--t2);max-width:640px;margin-bottom:40px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;font-family:var(--sans);font-size:14px;letter-spacing:.16px;padding:0 48px 0 16px;border:1px solid transparent;border-radius:0;cursor:pointer;text-decoration:none;height:48px;transition:background .1s}
+.btn-p:hover{background:var(--blue-h)}
+.btn-t{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--blue);font-family:var(--sans);font-size:14px;letter-spacing:.16px;padding:0 16px;border:1px solid var(--blue);border-radius:0;cursor:pointer;text-decoration:none;height:48px;transition:background .1s}
+.btn-t:hover{background:var(--blue-10)}
+.hero-contacts{display:flex;gap:24px;flex-wrap:wrap}
+.hc{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--t2);text-decoration:none;letter-spacing:.16px}
+.hc:hover{color:var(--blue)}
+
+/* SECTION HEADER */
+.s-label{font-family:var(--mono);font-size:12px;color:var(--blue);letter-spacing:.32px;text-transform:uppercase;margin-bottom:8px}
+.s-title{font-size:32px;font-weight:300;line-height:1.25;color:var(--t1);margin-bottom:40px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+
+/* CARDS */
+.card{background:var(--l1);padding:24px;border-radius:0;transition:background .1s}
+.card:hover{background:#e8e8e8}
+.card-head{font-size:20px;font-weight:600;line-height:1.4;color:var(--t1);margin-bottom:4px}
+.card-sub{font-size:14px;color:var(--blue);letter-spacing:.16px;margin-bottom:4px}
+.card-meta{font-family:var(--mono);font-size:12px;color:var(--tp);letter-spacing:.32px;margin-bottom:14px}
+.card-body{font-size:14px;line-height:1.5;color:var(--t2);letter-spacing:.16px}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+
+/* EXPERIENCE */
+#experience{background:var(--bg)}
+.exp-card{background:var(--l1);padding:32px;border-left:3px solid var(--blue);margin-bottom:1px}
+.exp-card ul{margin-top:14px;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.exp-card ul li{font-size:14px;line-height:1.5;color:var(--t2);letter-spacing:.16px}
+
+/* PROJECTS */
+#projects{background:var(--l1)}
+.proj-card{background:var(--bg);display:flex;flex-direction:column;transition:background .1s}
+.proj-card:hover{background:#f4f4f4}
+.proj-media{width:100%;height:200px;background:#e0e0e0;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);overflow:hidden}
+.proj-img{width:100%;height:100%;object-fit:cover}
+.proj-ph{font-family:var(--mono);font-size:10px;color:var(--tp);letter-spacing:.32px;text-align:center;line-height:1.8;padding:8px}
+.proj-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.proj-title{font-size:16px;font-weight:600;color:var(--t1);margin-bottom:4px;line-height:1.4}
+.proj-period{font-family:var(--mono);font-size:11px;color:var(--tp);letter-spacing:.32px;margin-bottom:12px}
+.proj-desc{font-size:14px;color:var(--t2);line-height:1.5;letter-spacing:.16px;flex:1;margin-bottom:14px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tag{background:var(--blue-10);color:var(--blue);font-size:11px;padding:3px 9px;border-radius:24px;letter-spacing:.16px}
+.proj-link{font-size:12px;color:var(--blue);text-decoration:none;letter-spacing:.16px}
+.proj-link:hover{color:var(--blue-l);text-decoration:underline}
+
+/* COURSEWORK */
+#coursework{background:var(--bg)}
+.tag-row{display:flex;flex-wrap:wrap;gap:10px}
+.tag-lg{background:var(--l1);color:var(--t1);font-size:13px;padding:8px 16px;border-radius:24px;letter-spacing:.16px;border:1px solid var(--border)}
+
+/* SKILLS */
+#skills{background:var(--l1)}
+.skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.skill-cat{background:var(--bg);padding:24px}
+.skill-cat-label{font-family:var(--mono);font-size:11px;color:var(--blue);letter-spacing:.32px;text-transform:uppercase;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--blue)}
+.skill-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--l2)}
+.skill-item:last-child{border-bottom:none}
+.skill-name{font-size:14px;color:var(--t1);letter-spacing:.16px}
+.skill-dots{display:flex;gap:3px}
+.dot{width:8px;height:8px;border-radius:0;background:var(--l2)}
+.dot.on{background:var(--blue)}
+.dot.half{background:var(--border)}
+
+/* LANGUAGES */
+#languages{background:var(--bg)}
+
+/* CERTS */
+#certifications{background:var(--l1)}
+.cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px}
+.cert-card{background:var(--bg);padding:20px 24px;display:flex;align-items:center;gap:20px;transition:background .1s}
+.cert-card:hover{background:#e8e8e8}
+.cert-badge-slot{width:56px;height:56px;min-width:56px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--blue-10);display:flex;align-items:center;justify-content:center;font-size:22px}
+.cert-info{flex:1}
+.cert-name{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:4px;line-height:1.4}
+.cert-issuer{font-family:var(--mono);font-size:11px;color:var(--tp);letter-spacing:.32px}
+
+/* FOOTER */
+footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
+.footer-name{font-size:32px;font-weight:300;color:#fff;margin-bottom:8px}
+.footer-tag{font-size:14px;color:var(--nav-t);letter-spacing:.16px;margin-bottom:32px}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:32px}
+.footer-links a{color:var(--nav-t);text-decoration:none;font-size:14px;letter-spacing:.16px;transition:color .1s}
+.footer-links a:hover{color:#fff}
+.footer-hr{border:none;border-top:1px solid #393939;margin:24px 0}
+.footer-copy{font-size:12px;color:#6f6f6f;letter-spacing:.32px}
+
+/* LIGHT THEME */
+[data-theme="light"]{
+  --bg:#ffffff;--l1:#f4f4f4;--l2:#e0e0e0;
+  --t1:#161616;--t2:#525252;--tp:#6f6f6f;--border:#c6c6c6;
+  --blue:#0f62fe;--blue-h:#0353e9;--blue-a:#002d9c;--blue-l:#0043ce;--blue-10:#edf5ff;
+  --nav:#161616;--nav-t:#c6c6c6;
+}
+
+/* DARK THEME — AMOLED/MIDNIGHT */
+[data-theme="dark"]{
+  --bg:#000000;--l1:#0d0d0d;--l2:#1a1a1a;
+  --t1:#ffffff;--t2:#b0b0b0;--tp:#666666;--border:#2a2a2a;
+  --blue:#4d94ff;--blue-h:#6aaaff;--blue-a:#c8dfff;--blue-l:#6aaaff;--blue-10:#00123a;
+  --nav:#000000;--nav-t:#888888;
+}
+[data-theme="dark"] nav{border-bottom:1px solid #1a1a1a}
+[data-theme="dark"] .card:hover{background:#181818}
+[data-theme="dark"] .cert-card:hover{background:#181818}
+[data-theme="dark"] .proj-card{background:#0d0d0d;border:1px solid #1a1a1a}
+[data-theme="dark"] .proj-card:hover{background:#141414}
+[data-theme="dark"] .proj-media{background:#1a1a1a;border-color:#2a2a2a}
+[data-theme="dark"] .cert-badge-slot{background:#00123a}
+[data-theme="dark"] .pub{background:#00123a;border-color:var(--blue)}
+[data-theme="dark"] .exp-card{border-color:var(--blue)}
+[data-theme="dark"] .s-title{border-color:#2a2a2a}
+[data-theme="dark"] .skill-item{border-color:#1a1a1a}
+[data-theme="dark"] .skill-cat-label{border-color:var(--blue)}
+[data-theme="dark"] .footer-hr{border-color:#1a1a1a}
+[data-theme="dark"] .dot{background:#2a2a2a}
+[data-theme="dark"] .dot.on{background:var(--blue)}
+[data-theme="dark"] .dot.half{background:#404040}
+[data-theme="dark"] #hero{border-color:#1a1a1a}
+[data-theme="dark"] .tag-lg{background:#0d0d0d;border-color:#2a2a2a;color:var(--t1)}
+[data-theme="dark"] .btn-p{background:var(--blue);color:#000}
+[data-theme="dark"] .btn-p:hover{background:var(--blue-h)}
+[data-theme="dark"] .btn-t{border-color:var(--blue);color:var(--blue)}
+[data-theme="dark"] .btn-t:hover{background:#00123a}
+
+*{transition:background-color .2s,color .2s,border-color .2s}
+
+/* RESPONSIVE */
+@media(max-width:1056px){.g3{grid-template-columns:1fr 1fr}.cert-grid{grid-template-columns:1fr 1fr}.skill-grid{grid-template-columns:1fr}}
+@media(max-width:672px){
+  .hero-name{font-size:42px}.hero-role{font-size:24px}
+  .g2,.g3,.cert-grid{grid-template-columns:1fr}
+  nav{padding:0 16px}.nav-links{display:none}
+  .wrap{padding:0 16px}
+  section{padding:48px 0}
+  #hero{padding:96px 0 48px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">R Gangaraju</a>
+  <ul class="nav-links">
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certificates</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour mode">◐ Dark</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <p class="hero-mono">M.Tech Aerospace Engineering · IIT Madras</p>
+    <h1 class="hero-name">R Gangaraju</h1>
+    <h2 class="hero-role">Aerospace Engineer & Computational Researcher</h2>
+    <p class="hero-desc">
+      I work across aerodynamics, propulsion, and structures — from vortex-method codes in Python to high-fidelity CFD in ANSYS Fluent/CFX. My project work spans transonic propeller swirl recovery, solid propellant-based gas turbine design, fixed-wing UAV development, and conceptual aircraft design, alongside hands-on experience with UAV flight operations.
+    </p>
+    <div class="hero-btns">
+      <a href="mailto:ae25m023@smail.iitm.ac.in" class="btn-p">Get in touch →</a>
+      <a href="https://linkedin.com/in/gangaraju" target="_blank" class="btn-t">LinkedIn ↗</a>
+    </div>
+    <div class="hero-contacts">
+      <a href="tel:+917702071303" class="hc">📞 7702071303</a>
+      <a href="mailto:ae25m023@smail.iitm.ac.in" class="hc">✉ ae25m023@smail.iitm.ac.in</a>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background:var(--l1)">
+  <div class="wrap">
+    <p class="s-label">Academic Background</p>
+    <h2 class="s-title">Education</h2>
+    <div class="g2">
+      <div class="card">
+        <p class="card-sub">Indian Institute of Technology Madras</p>
+        <h3 class="card-head">M.Tech — Aerospace Engineering</h3>
+        <p class="card-meta">2026 – 2027 · CGPA: 7.65</p>
+        <p class="card-body">Graduate coursework spanning aerospace structures, propulsion, and computational fluid dynamics, building on research experience in aeroelasticity and unsteady aerodynamics.</p>
+      </div>
+      <div class="card">
+        <p class="card-sub">Hindustan Institute of Technology and Science</p>
+        <h3 class="card-head">B.Tech — Aerospace Engineering</h3>
+        <p class="card-meta">2018 – 2022 · 89.4%</p>
+        <p class="card-body">Foundational training across aerodynamics, structures, and propulsion, with project work in CFD, conceptual aircraft design, and autonomous robotics.</p>
+      </div>
+      <div class="card">
+        <p class="card-sub">Sri Chaithanya Junior College</p>
+        <h3 class="card-head">Higher Secondary School (12th)</h3>
+        <p class="card-meta">2015 – 2017 · 94.1%</p>
+        <p class="card-body">Completed higher secondary education with a focus on mathematics and the physical sciences.</p>
+      </div>
+      <div class="card">
+        <p class="card-sub">ZPHS High School</p>
+        <h3 class="card-head">Secondary School (10th)</h3>
+        <p class="card-meta">2014 – 2015 · CGPA: 8.3</p>
+        <p class="card-body">Completed secondary education.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <p class="s-label">Field Operations</p>
+    <h2 class="s-title">Experience</h2>
+    <div class="exp-card">
+      <p class="card-sub">YelloSkye, Bangalore</p>
+      <h3 class="card-head">Analyst — Client Operations</h3>
+      <p class="card-meta">Jul 2024 – Sep 2024</p>
+      <ul>
+        <li>Analyzed UAV flight telemetry and geospatial data to optimize drone navigation routes, monitored battery performance and environmental conditions to ensure safe, highly efficient flight operations.</li>
+        <li>Conducted high-resolution terrain mapping to dynamically generate risk-averse flight paths.</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <p class="card-sub">Aarav Unmanned Systems, Bangalore</p>
+      <h3 class="card-head">Enterprise — Field Operations</h3>
+      <p class="card-meta">Jan 2023 – Dec 2023</p>
+      <ul>
+        <li>Analyzed UAV flight telemetry and geospatial data to optimize drone navigation routes, monitored battery performance and environmental conditions to ensure safe, highly efficient flight operations.</li>
+        <li>Conducted high-resolution terrain mapping to dynamically generate risk-averse flight paths.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--l1)">
+  <div class="wrap">
+    <p class="s-label">Course Projects</p>
+    <h2 class="s-title">Projects</h2>
+    <div class="g3">
+
+      <!-- P1: Swirl Recovery Propeller -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <div class="proj-ph">[ Propeller CFD contour plot<br>or swirl recovery vane CAD render ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">CFD Analysis of Swirl Recovery in a Transonic Propeller</h3>
+          <p class="proj-period">Course Project · IIT Madras</p>
+          <p class="proj-desc">Designed high-fidelity 3D models of a transonic propeller with swirl recovery vanes in CATIA V5, quantifying aerodynamic performance through CFD simulations in ANSYS Fluent/CFX. Optimized boundary conditions and mesh refinement to achieve stable convergence and quantify the recovery of rotational wake energy.</p>
+          <div class="proj-tags">
+            <span class="tag">CATIA V5</span><span class="tag">ANSYS Fluent/CFX</span>
+            <span class="tag">Propeller Aerodynamics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2: Tandem Plunging Airfoils -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <div class="proj-ph">[ Vortex wake visualization<br>or Theodorsen validation plot ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Tandem Plunging Airfoils — Discrete & Lumped Vortex Methods</h3>
+          <p class="proj-period">Python · Course Project</p>
+          <p class="proj-desc">Built a computational framework implementing lumped and discrete vortex methods, validating predictions against Theodorsen analytical theory across reduced frequencies from 0.05 to 1. Decomposed unsteady forces into circulatory and added-mass components to resolve the transition from a drag-producing wake to a thrust-producing reverse von Kármán street.</p>
+          <div class="proj-tags">
+            <span class="tag">Python</span><span class="tag">Vortex Methods</span>
+            <span class="tag">Unsteady Aerodynamics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3: Autonomous Robot -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <div class="proj-ph">[ Robot navigation demo<br>or sensor layout diagram ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Autonomous Mobile Robot Development</h3>
+          <p class="proj-period">Python</p>
+          <p class="proj-desc">Designed and built an autonomous ground robot using Arduino, integrating ultrasonic and infrared sensors with real-time navigation algorithms for dynamic obstacle avoidance and path-following.</p>
+          <div class="proj-tags">
+            <span class="tag">Arduino</span><span class="tag">Python</span>
+            <span class="tag">Robotics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4: Aircraft Conceptual Design -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <div class="proj-ph">[ Aircraft CAD render<br>or CFD pressure contour ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Aircraft Aerodynamic Modeling and Conceptual Design</h3>
+          <p class="proj-period">ANSYS Fluent, CATIA V5</p>
+          <p class="proj-desc">Developed high-fidelity 3D aircraft models with 2D drafting and executed CFD simulations to analyze aerodynamic effects of iterative design modifications. Conducted parametric trade studies balancing payload vs. range and speed vs. efficiency, assessing the impact of aerodynamic efficiency on structural weight.</p>
+          <div class="proj-tags">
+            <span class="tag">CATIA V5</span><span class="tag">ANSYS Fluent</span>
+            <span class="tag">Conceptual Design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5: Gas Turbine -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <div class="proj-ph">[ Turbine stage CFD contour<br>or 1D cycle analysis plot ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Solid Propellant-Based Micro Gas Turbine Engine</h3>
+          <p class="proj-period">MULTALL, ANSYS Fluent, MATLAB</p>
+          <p class="proj-desc">Designed and simulated a compact solid propellant-based axial gas turbine engine to increase mass flow and reduce turbine inlet temperature to 852 K, as an alternative to conventional batteries. Validated the integrated design using 1D analytical models and CFD, delivering 3.26 kW at 25,000 RPM with 78.8% total-to-total isentropic efficiency.</p>
+          <div class="proj-tags">
+            <span class="tag">MULTALL</span><span class="tag">ANSYS Fluent</span>
+            <span class="tag">MATLAB</span><span class="tag">Turbomachinery</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6: UAV Surveillance -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <div class="proj-ph">[ UAV CAD render<br>or mission payload layout ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Fixed-Wing UAV Design for Surveillance</h3>
+          <p class="proj-period">CATIA, C++</p>
+          <p class="proj-desc">Designed a fixed-wing UAV for the 1.2 kg payload class, incorporating optical fiber communication for secure, high-bandwidth surveillance telemetry. Optimized aerodynamic sizing, motor selection, and control surface dimensions to maximize loiter endurance for a manual-landing platform under strict physical constraints.</p>
+          <div class="proj-tags">
+            <span class="tag">CATIA</span><span class="tag">C++</span>
+            <span class="tag">UAV Design</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COURSEWORK -->
+<section id="coursework">
+  <div class="wrap">
+    <p class="s-label">Academic Foundation</p>
+    <h2 class="s-title">Relevant Coursework</h2>
+    <div class="tag-row">
+      <span class="tag-lg">Aerospace Structures</span>
+      <span class="tag-lg">Composite Materials and Structures</span>
+      <span class="tag-lg">Finite Element Analysis for Aerospace</span>
+      <span class="tag-lg">Structural Dynamics</span>
+      <span class="tag-lg">Aeroelasticity</span>
+      <span class="tag-lg">Propulsion Systems</span>
+      <span class="tag-lg">Jet and Rocket Propulsion</span>
+      <span class="tag-lg">Computational Fluid Dynamics (CFD)</span>
+      <span class="tag-lg">Aerodynamics</span>
+      <span class="tag-lg">Compressible Fluid Flow</span>
+      <span class="tag-lg">Unsteady Aerodynamics</span>
+      <span class="tag-lg">Flight Mechanics</span>
+      <span class="tag-lg">Flight Dynamics and Control</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <p class="s-label">Technical Expertise</p>
+    <h2 class="s-title">Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-cat">
+        <p class="skill-cat-label">CAD Tools</p>
+        <div class="skill-item"><span class="skill-name">CATIA V5</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Fusion 360</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+        <div class="skill-item"><span class="skill-name">SolidWorks</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+        <div class="skill-item"><span class="skill-name">NX CAD</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+      </div>
+      <div class="skill-cat">
+        <p class="skill-cat-label">Programming</p>
+        <div class="skill-item"><span class="skill-name">Python</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+        <div class="skill-item"><span class="skill-name">C++</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+      </div>
+      <div class="skill-cat">
+        <p class="skill-cat-label">CFD & Aerodynamics</p>
+        <div class="skill-item"><span class="skill-name">OpenFOAM</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+        <div class="skill-item"><span class="skill-name">ANSYS Fluent/CFX</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+      </div>
+      <div class="skill-cat">
+        <p class="skill-cat-label">Structural & Numerical Analysis</p>
+        <div class="skill-item"><span class="skill-name">Abaqus</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+        <div class="skill-item"><span class="skill-name">ANSYS Structural</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+        <div class="skill-item"><span class="skill-name">MATLAB</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--tp);font-family:var(--mono);letter-spacing:.32px;margin-top:12px">
+      ■■■ Proficient &nbsp;·&nbsp; ■■□ Intermediate &nbsp;·&nbsp; ■□□ Familiar
+    </p>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section id="languages">
+  <div class="wrap">
+    <p class="s-label">Spoken</p>
+    <h2 class="s-title">Languages</h2>
+    <div class="tag-row">
+      <span class="tag-lg">English</span>
+      <span class="tag-lg">Telugu</span>
+      <span class="tag-lg">Tamil</span>
+      <span class="tag-lg">Hindi</span>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="wrap">
+    <p class="s-label">Credentials</p>
+    <h2 class="s-title">Certificates</h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-badge-slot">🛠️</div>
+        <div class="cert-info">
+          <p class="cert-name">CATIA V5</p>
+          <p class="cert-issuer">CAD SCHOOL</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge-slot">🐍</div>
+        <div class="cert-info">
+          <p class="cert-name">Python, Exploring Time and Space</p>
+          <p class="cert-issuer">COURSERA</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge-slot">🚀</div>
+        <div class="cert-info">
+          <p class="cert-name">Astronautics and Human Space Flight</p>
+          <p class="cert-issuer">EDX</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <h2 class="footer-name">R Gangaraju</h2>
+    <p class="footer-tag">M.Tech Aerospace Engineering · IIT Madras · Open to research and engineering opportunities</p>
+    <div class="footer-links">
+      <a href="mailto:ae25m023@smail.iitm.ac.in">✉ ae25m023@smail.iitm.ac.in</a>
+      <a href="tel:+917702071303">📞 7702071303</a>
+      <a href="https://linkedin.com/in/gangaraju" target="_blank">LinkedIn ↗</a>
+    </div>
+    <hr class="footer-hr"/>
+    <p class="footer-copy">© 2026 R Gangaraju</p>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  let dark = window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function applyTheme(){
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    btn.textContent = dark ? '◑ Light' : '◐ Dark';
+  }
+  applyTheme();
+  btn.addEventListener('click', () => { dark = !dark; applyTheme(); });
+</script>
+</body>
+</html>
